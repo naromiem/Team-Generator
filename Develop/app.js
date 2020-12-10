@@ -46,7 +46,7 @@ function runEmplist(){
         {
             type:'list',
             name: 'title',
-            message: `Whats your position?`,
+            message: `Choose a new team member role to add?`,
             choices: ["Manager", "Engineer", "Intern"],
         },
     ])
@@ -77,19 +77,19 @@ const managerFunction = () => {
         {
             type:'input',
             name: 'name',
-            message: `Whats the manager's name?`,
+            message: `What is their first and last name?`,
 
         },
         {
             type:'input',
             name: 'id',
-            message: `Whats their ID?`,
+            message: `What is their ID?`,
 
         },
         {
             type:'input',
             name: 'email',
-            message: `Whats their email?`,
+            message: `What is their email?`,
 
         },
         {
@@ -121,25 +121,25 @@ const engineerFunction = () => {
         {
             type:'input',
             name: 'name',
-            message: `Whats the engineer's name?`,
+            message: `Whats is their first amd last name?`,
 
         },
         {
             type:'input',
             name: 'id',
-            message: `Whats their ID?`,
+            message: `What is their ID?`,
 
         },
         {
             type:'input',
             name: 'email',
-            message: `Whats their email?`,
+            message: `What is their work email address?`,
 
         },
         {
             type:'input',
             name: 'username',
-            message: `Whats their github username?`,
+            message: `What is their github username?`,
         },
     ])
     .then((response) => {
@@ -165,19 +165,19 @@ const internFunction = () => {
         {
             type:'input',
             name: 'name',
-            message: `Whats the intern's name?`,
+            message: `What is their first and last name?`,
 
         },
         {
             type:'input',
             name: 'id',
-            message: `Whats their ID?`,
+            message: `What is their ID number?`,
 
         },
         {
             type:'input',
             name: 'email',
-            message: `Whats their email?`,
+            message: `Add their work email?`,
 
         },
         {
