@@ -36,48 +36,18 @@ const render = require("./lib/htmlRenderer");
 
 const team =[];
 
-runEmplist();
+managerFunction();
 
-function runEmplist(){
-
-
-    inquirer
-    .prompt([
-        {
-            type:'list',
-            name: 'title',
-            message: `Choose a new team member role to add?`,
-            choices: ["Manager", "Engineer", "Intern"],
-        },
-    ])
-    .then((response) => {
-        console.log (response);
-        let position = response.title;
-
-        switch(position) {
-            case "Manager":
-                managerFunction();
-                break
-            case "Engineer":
-                engineerFunction();
-                break
-            case "Intern":
-                internFunction();
-                break
-        }
-       
-    });
-}
+function managerFunction(){
+    console.log("Let's build an engineering team!")
 
 
-
-const managerFunction = () => {
     inquirer
      .prompt([
         {
             type:'input',
             name: 'name',
-            message: `What is their first and last name?`,
+            message: `What is the managers first and last name?`,
 
         },
         {
@@ -108,20 +78,20 @@ const managerFunction = () => {
             response.position,
         );
         team.push(manager);
-        execute();
+        console.log("Manager added to the team.\n Now will add engineer's");
+        engineerFunction();
 
     });
+}
 
-    
 
-};
 const engineerFunction = () => {
     inquirer
      .prompt([
         {
             type:'input',
             name: 'name',
-            message: `Whats is their first amd last name?`,
+            message: `Whats is the engineer's first amd last name?`,
 
         },
         {
@@ -141,6 +111,12 @@ const engineerFunction = () => {
             name: 'username',
             message: `What is their github username?`,
         },
+        {
+            type:'list',
+            name: 'newEmployee',
+            message: `Do you want to add more engineers?`,
+            choices: ["yes", "no"],
+        },
     ])
     .then((response) => {
         console.log (response) 
@@ -152,12 +128,16 @@ const engineerFunction = () => {
             response.username,
         );
         team.push(engineer);
-        execute();
-
+        const add = response.newEmployee;
+        switch(add){
+            case "yes":
+                engineerFunction();
+                break
+            case "no":
+                internFunction();
+                break
+        }
     });
-
-    
-
 };
 const internFunction = () => {
     inquirer
@@ -165,7 +145,7 @@ const internFunction = () => {
         {
             type:'input',
             name: 'name',
-            message: `What is their first and last name?`,
+            message: `What is intern's first and last name?`,
 
         },
         {
@@ -184,7 +164,15 @@ const internFunction = () => {
             type:'input',
             name: 'school',
             message: `What school did they attend?`,
+
         },
+        {
+            type:'list',
+            name: 'newIntern',
+            message: `Do you want to add more Interns?`,
+            choices: ["yes", "no"], 
+        }
+
     ])
     .then((response) => {
         console.log (response) 
@@ -196,9 +184,19 @@ const internFunction = () => {
             response.school,
         );
         team.push(intern);
-        execute();
+        const add = response.newIntern
+        switch(add){ 
+            case "yes":
+                internFunction();
+                break
+            case "no":
+                execute();
+                break
+        }
 
     });
+
+
 
     
 
